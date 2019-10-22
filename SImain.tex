@@ -342,10 +342,15 @@ which is Eq. 10 in our main text.
 \section{3D Model Membrane Simulation}
 
 In this section, we detail calculations that qualitatively suggest that the results obtained with the 2D model in the main text can be extended to non-equilibrium growth problems with three dimensional vesicles/membranes. Following Ref.~\cite{Mahadevan2019}, we model a three dimensional fluid vesicle using a triangulated mesh. The nodes of the mesh are meant to represent membrane particles in a coarse-grained fashion. The energy associated with a specific configuration of the vesicle is given by $E=\sum_{\rm faces} \left[(k_A(A-A_0)^2 + \sum_{i=1}^3k_\theta (\theta_i-\pi/3)^2 + \sum^\prime k_\phi (\phi-\pi)^2$)\right]$, where the sum is over the triangulated faces, 
-Inspired by ~\cite{Mahadevan2019,Wolde2019}, in this 3D model, we model a fluid vesicle using a closed surface consisting of particles that are triangulated together. The energy of the system is $E=\sum (k_A(A-A_0)^2 + k_\theta (\theta-\pi/3)^2 + k_\phi (\phi-\pi)^2$), here A is the area that three particles make, $\theta$ is the angle they make and $\phi$ is the angle that two adjacent planes make. In this model, the number of bonds between particles is limited from 5 to 7 because particles with bonds not on this range are very energy unfavorable. Similar to the 2D model, we attempt to add and remove particle in our Monte Carlo simulation. In the addition move, a point is chosen in a triangulated surface to add the new particle.  The number of bonds this particle will have is randomly chosen from 5 to 7. For this to happen, some of the neighboring bonds will be destroyed to make room for the new ones. Thus, in this model, the connectivity between the particles is not conserved. In the removal move, a particle will be fused to one of its neighbors. Like the 2D model simulation, the acceptance rate for addition is $\rm{Min}(\rm{Exp}[\beta(-\Delta E +\mu]),1)$ and the removal rate is $\rm{Min}(\rm{Exp}[\beta(-\Delta E -\mu)],1)$.
+Inspired by ~\cite{Mahadevan2019,Wolde2019}, in this 3D model, we model a fluid vesicle using a closed surface consisting of particles that are triangulated together. The energy of the system is $E=\sum_{\rm faces}\left[ (k_A(A-A_0)^2 +\sum_{i=1}^3 k_\theta (\theta_i-\pi/3)^2 + \sum^\prime k_\phi (\phi-\pi)^2$)\right], where $\sum_{\rm faces}$ is a sum over the triangulated faces, $A$ is the area of a triangulated face, $\theta_i$ are the angles inside a triangulated face,  $\sum^\prime$ denotes a sum over different adjacent phases and $\phi$ denotes the angle between two adjacent faces. 
+
+In our model, the number of bonds or connections a particular particle can make is limited from $5$ to $7$.  Similar to the 2D model, we attempt to add and remove particle in our Monte Carlo simulation. In the addition move, a point is chosen in a triangulated surface to add the new particle.  
+
+ In the removal move, a particle will be fused with one of its neighbors. Like the 2D model simulation, the acceptance rate for addition is $\rm{Min}(\rm{Exp}[\beta(-\Delta E +\mu]),1)$ and the removal rate is $\rm{Min}(\rm{Exp}[\beta(-\Delta E -\mu)],1)$. Since the overall connectivity of the particles changes in the course of the addition and removal moves, this membrane model will exhibit fluid like behavior and will not have crumpling transitions of the sort in ~\cite{Paulose2012}.
 
 Fig.~\ref{fig:3Dmembranesurface} shows the shape of our 3D membrane model at equilibrium. Fig.~\ref{fig:relativeradius3D} is a heat map showing the relative radii of the models when it is at equilibrium and at the instability.
-We then use the same procedure with the 2D model, but now the basis used is spherical harmonics not simple Fourier modes. Fig.~\ref{fig:boundsof3Dmembrane} shows how the application of our bounds to the 3D membrane model. Unlike the 2D case where linear response dominates near equilibrium, here linear response barely have any contribution at all. We are still investigating this result and will report it in upcoming paper.
+
+In order to apply the bounds in the main text, we decompose the fluctuations of the 3D membrane model into spherical harmonic modes. Fig.~\ref{fig:boundsof3Dmembrane} shows how the application of our bounds to the 3D membrane model. We plan to further investigate these ideas in future work. 
 
 \begin{figure*}
 \includegraphics[width=1\linewidth,angle=0]{Fig10.pdf}
@@ -359,7 +364,7 @@ We then use the same procedure with the 2D model, but now the basis used is sphe
 \end{figure*}
 \begin{figure*}
 \includegraphics[width=1\linewidth,angle=0]{Fig12.pdf}
-\caption{ This figure is similar to Fig. 6 in the main text but for 3D model. The $\epsilon$ here is calculated using the Helfrich Hamiltonian for 3D membranes. In here, however, it seems the contribution of v/D is minimal. We are still investigating why this happen }
+\caption{ This figure is similar to Fig. 6 in the main text but for 3D model. The reogranization cost $\epsilon_{\rm diss} is computed by decomposing the membrane fluctuations into spherical harmonic modes as explained in the text. We plan to further investigate these ideas in future work.}
 \label{fig:boundsof3Dmembrane}
 \end{figure*}
 \bibliography{References02232018}
