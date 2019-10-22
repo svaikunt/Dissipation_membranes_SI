@@ -341,8 +341,7 @@ If we plug in the definition of $\langle\epsilon_{\rm diss}\rangle:$
 which is Eq. 10 in our main text.
 \section{3D Model Membrane Simulation}
 
-In this section, we detail calculations that qualitatively suggest that the results obtained with the 2D model in the main text can be extended to non-equilibrium growth problems with three dimensional vesicles/membranes. Following Ref.~\cite{Mahadevan2019}, we model a three dimensional fluid vesicle using a triangulated mesh. The nodes of the mesh are meant to represent membrane particles in a coarse-grained fashion. The energy associated with a specific configuration of the vesicle is given by $E=\sum_{\rm faces} \left[(k_A(A-A_0)^2 + \sum_{i=1}^3k_\theta (\theta_i-\pi/3)^2 + \sum^\prime k_\phi (\phi-\pi)^2$)\right]$, where the sum is over the triangulated faces, 
-Inspired by ~\cite{Mahadevan2019,Wolde2019}, in this 3D model, we model a fluid vesicle using a closed surface consisting of particles that are triangulated together. The energy of the system is $E=\sum_{\rm faces}\left[ (k_A(A-A_0)^2 +\sum_{i=1}^3 k_\theta (\theta_i-\pi/3)^2 + \sum^\prime k_\phi (\phi-\pi)^2$)\right], where $\sum_{\rm faces}$ is a sum over the triangulated faces, $A$ is the area of a triangulated face, $\theta_i$ are the angles inside a triangulated face,  $\sum^\prime$ denotes a sum over different adjacent phases and $\phi$ denotes the angle between two adjacent faces. 
+In this section, we detail calculations that qualitatively suggest that the results obtained with the 2D model in the main text can be extended to non-equilibrium growth problems with three dimensional vesicles/membranes. Following Ref.~\cite{Mahadevan2019}, we model a three dimensional fluid vesicle using a triangulated mesh. The nodes of the mesh are meant to represent membrane particles in a coarse-grained fashion. The energy associated with a specific configuration of the vesicle is given by  $H=\sum_{\rm faces}\left[ (k_A(A-A_0)^2 +\sum_{i=1}^3 k_\theta (\theta_i-\pi/3)^2 + \sum^\prime k_\phi (\phi-\pi)^2)\right]$, where $\sum_{\rm faces}$ is a sum over the triangulated faces, $A$ is the area of a triangulated face, $\theta_i$ are the angles inside a triangulated face,  $\sum^\prime$ denotes a sum over different adjacent phases and $\phi$ denotes the angle between two adjacent faces. 
 
 In our model, the number of bonds or connections a particular particle can make is limited from $5$ to $7$.  Similar to the 2D model, we attempt to add and remove particle in our Monte Carlo simulation. In the addition move, a point is chosen in a triangulated surface to add the new particle.  
 
@@ -354,7 +353,7 @@ In order to apply the bounds in the main text, we decompose the fluctuations of 
 
 \begin{figure*}
 \includegraphics[width=1\linewidth,angle=0]{Fig10.pdf}
-\caption{ The shape of our 3D membrane model at equilibrium. The red dots represent the particles in our 3D membrane model. The particles are triangulated and interact according to the Hamiltonian $H=\sum (k_A(A-A_0)^2 + k_\theta (\theta-\pi/3)^2 + k_\phi (\phi-\pi)^2$), here A is the area that three particles make, $\theta$ is the angle they make and $\phi$ is the angle that two adjacent planes make.  }
+\caption{ The shape of our 3D membrane model at equilibrium. The red dots represent the particles in our 3D membrane model. The particles are triangulated and interact according to the Hamiltonian $H=\sum_{\rm faces}\left[ (k_A(A-A_0)^2 +\sum_{i=1}^3 k_\theta (\theta_i-\pi/3)^2 + \sum^\prime k_\phi (\phi-\pi)^2)\right]$, where $\sum_{\rm faces}$ is a sum over the triangulated faces, $A$ is the area of a triangulated face, $\theta_i$ are the angles inside a triangulated face,  $\sum^\prime$ denotes a sum over different adjacent phases and $\phi$ denotes the angle between two adjacent faces.}
 \label{fig:3Dmembranesurface}
 \end{figure*}
 \begin{figure*}
@@ -364,7 +363,7 @@ In order to apply the bounds in the main text, we decompose the fluctuations of 
 \end{figure*}
 \begin{figure*}
 \includegraphics[width=1\linewidth,angle=0]{Fig12.pdf}
-\caption{ This figure is similar to Fig. 6 in the main text but for 3D model. The reogranization cost $\epsilon_{\rm diss} is computed by decomposing the membrane fluctuations into spherical harmonic modes as explained in the text. We plan to further investigate these ideas in future work.}
+\caption{ This figure is similar to Fig. 6 in the main text but for 3D model. The reogranization cost $\epsilon_{\rm diss}$ is computed by decomposing the membrane fluctuations into spherical harmonic modes as explained in the text. We plan to further investigate these ideas in future work.}
 \label{fig:boundsof3Dmembrane}
 \end{figure*}
 \bibliography{References02232018}
