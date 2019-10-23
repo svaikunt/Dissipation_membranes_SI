@@ -17,7 +17,8 @@
 \newcommand{\Bi}{\text{Bi}}
 \newcommand{\Real}{\text{Re}}
 \newcommand{\Imag}{\text{Im}}
-
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
 \usepackage{verbatim}
 \usepackage{natbib}
 \bibliographystyle{apsrev4-1}
@@ -27,7 +28,7 @@
 \affiliation{$^1$The James Franck Institute, The University of Chicago, Chicago, IL,}
 \affiliation{$^2$ Department of Chemistry, The University of Chicago, Chicago, IL.}
 \maketitle
-\section{Move set for adding and removing particles in the Monte-Carlo simulations}
+\section{1. Move set for adding and removing particles in the Monte-Carlo simulations}
 Fig.~\ref{fig:SimulationSchematic} describes the procedure used to simulate addition and removal moves in our numerical calculations. The initial configuration of the assembly is a circle consisting of $N_0$ particles with equal distance between them. Addition and removal events are chosen with equal probability. In an addition move, first a random particle in the assembly is chosen. As described in Fig.~\ref{fig:SimulationSchematic}, an addition move is attempted in a region between the chosen random particle (B) and the next particle in the clockwise direction (C). The area of the region in which the insertion is attempted (denoted in Fig.~\ref{fig:SimulationSchematic}) is kept a constant.  An addition move is  accepted with the probability $\rm{Min}(\rm{Exp}[\beta(-\Delta E +\mu]),1)$. In a removal move,  a random particle is simply removed from the assembly with the probability  $\rm{Min}(\rm{Exp}[\beta(-\Delta E -\mu)],1)$. Here $\beta=\frac{1}{k_BT}$. The transition rates of the simulations are:
 \begin{equation}
 W^{N,N+1}_{ij}=\frac{1}{AN}\rm{Min(Exp[\beta(-(E_j - E_i)+\mu)],1)}
@@ -58,7 +59,7 @@ Here we have introduced the notation $\mu_{\rm{eq}}$ to denote the value of the 
 
 Eq.~\ref{eq:eqdynamics} also implies that at equilibrium there is no particle current in average. With this, we can numerically determine $\mu_{\rm eq}$ as the value of $\mu$ for which the size of the system does not change in our simulation. For the values of $k_s=4$ and $k_\theta$$=6$, the $\beta\mu_{\rm eq}$ was approximately $2.23$.
 
-\section{Dynamics of the Simulation}
+\section{2. Dynamics of the Simulation}
 \begin{figure*}[tbp]
 \includegraphics[width=1\linewidth,angle=0]{Fig1.pdf}
 \caption{ Schematic of the simulation's addition and remove moves. The addition rate is $W_{ij}^{N,N+1}=\frac{1}{NA} \rm{Min}(\rm{Exp}[\beta(-(E_j-E_i) +\mu),1])$. The removal rate is $W_{ji}^{N+1,N}=\frac{1}{N+1}\rm{Min}(\rm{Exp}[\beta(-(E_i-E_j) -\mu)],1)$. Here, A is the area of the arc which we keep constant $A=4$, N is the number of particle in the assembly, $E_j = \frac{k_s}{2}(l_{BE}-l_0)^2+\frac{k_s}{2}(l_{CE}-l_0)^2+k_\theta(\widehat{ABE}-\pi)^2+k_\theta(\widehat{ABE}-\pi)^2+k_\theta(\widehat{ECD}-\pi)^2+C$ and $E_i=\frac{k_s}{2}(l_{BC}-l_0)^2+k_\theta(\widehat{ABC}-\pi)^2+k_\theta(\widehat{BCD}-\pi)^2+C$; C is the energy contribution of the other angles and strings }
@@ -69,7 +70,7 @@ In simulations performed with the dynamics described above, the average number o
 %and relaxing our simulation, the rate at which a particle is accepted into the assembly scales inversely with its size. If we let each Monte-Carlo attempt counted as a unit of time, the scaling of system size and variance of system size fluctuations do not scale linearly with the time $t$. Rather they scale as the square root, $\sqrt{t}$. Linear scaling with $t$ can be readily recovered by rescaling time, $t^*=t/N$.
 %Fig \ref{fig:GrowthRate} and Fig \ref{fig:Variance} show that the growth rate and size variance of the system does not scale linear with t but with its square root. Time here is the number of attempt we add and remove a random particle. This is because in the simulation we only allow addition and remove moves. Thus, the system can only relax through the moves also. Therefore, it will take the system around N*addition/remove steps to relax it to steady state. If we then redefine time, $dt\text{*} = dt/N$ to take into account that many particles can act at same time, then in this new define time t*, our growth rate and size variance will scale linear with time. Using this procedure, we can then extract the growht rate and its variance. Still, this shows that the assembly growth rate does not increase with system size.
 
-\section{Extracting v/D}
+\section{3. Extracting v/D}
 Following the above discussion, in general, the formula for the size of the assembly has the form :
 \begin{equation}
 \label{eq:deltaN}
@@ -123,7 +124,7 @@ In Fig.~\ref{fig:growthvsvariance} we plot estimates of $v/D$ using Eq.~\ref{eq:
 %\section{Fitting Procedure}
 %In order to extract $\gamma$ and $\kappa$ we need to fit $\langle|\delta h(q)|^2\rangle$ to $\frac{1}{\gamma q^2 +\kappa q^4}$. However, to fit the function correctly, we have to take into account that the variance of the spectrum is not constant. Specifically, the standard deviation of this spectrum is equal to its average. In order words, the errors in measuring in amplitude of the long wavelength modes will be significantly higher than the errors in measuring the amplitudes of the short wavelength ones. This is because each mode can be independently described with an exponential distribution. To fit the spectrum, we have to adjust the weight of the variances in the fitting procedure: $\rm{Weight(q)} = \frac{1}{\rm{Var(\langle|\delta h|\rangle ^2)}}$ so that we do not overfit the long wavelength region.
 
-\section{Predicting effective elastic constants}
+\section{4. Predicting effective elastic constants}
 
 In the main text, we have used the bounds to answer the question: what is the required $\delta\mu$ to make the assembly acquire certain effective tension, $\gamma$. In a different way, we can use the bounds to address another question: given a $\delta\mu$, what is the least deviated from equilibrium, $\gamma$, the system will adopt. Fig~\ref{fig:epsilonpredict} shows how Eq. 7 and Eq. 8 in the main text answer this question.
 \begin{figure}[tbb]
@@ -133,7 +134,7 @@ In the main text, we have used the bounds to answer the question: what is the re
 \end{figure}
 
 
-\section{Measurement of The Surface Tension and Bending Rigidity}
+\section{5. Measurement of The Surface Tension and Bending Rigidity}
 
 As stated in the main text, the fluctuation of $|\delta h(q)|^2$ follows  a Helfrich like Hamiltonian. This also means that the fluctuations of $|\delta h(q)|^2$ follow an exponential distribution as shown in Fig.~\ref{fig:expdistributionateq}. We find that this is also true even when the system is out of equilibrium (Fig.~\ref{fig:expdistributionaoutofeq}).
 
@@ -166,7 +167,7 @@ Since the distribution of $|\delta h(q)|^2$ is exponential, its standard deviati
 Fig.~\ref{fig:bendingrigiditynormalization} and \ref{fig:surfacetensionynormalization} show how the bending rigidity and the surface tension are normalized with increasing $\delta\mu$ respectively at two different system sizes. As stated in the main text, the surface tension decreases with increasing $\delta\mu$ and seems to be independent of size (Fig.~\ref{fig:surfacetensionynormalization}). Unlike the surface tension, the bending rigidity does not change much from its equilibrium value with increasing $\delta\mu$(Fig.~\ref{fig:bendingrigiditynormalization}). Within statistical error bars, the bending rigidity seems to independent of system size. Therefore, we have assume the bending rigidity a constant in our calculation of $\epsilon_{\rm{diss}}$
 
 
-\section{A proof for the bounds in Eq.7 and Eq. 8 (Main Text) }
+\section{6. A proof for the bounds in Eq.7 and Eq. 8 (Main Text) }
 \begin{figure*}[tbp]
 \includegraphics[width=1\linewidth,angle=0]{Fig9.pdf}
 \caption{ Schematic of the addition/removal and rescaled moves of our Markov system. In our Markov network, to reach $\omega^\prime$ from $\omega$, the system has to go through an intermediate state $\tilde{\omega}$. From $\omega$ to $\tilde{\omega}$, a new particle is added to the assembly. From $\tilde{\omega}$ to $\omega^\prime$, a particle at the bottom is removed to preserve the same number of particles. We have colored the to be add or remove particle blue to distinguish it from the other particles in the assembly.}
@@ -294,7 +295,7 @@ which is Eq. 8 in the main text.
 %    \includegraphics[scale=0.35]{estimationfordeltamu1d0ver2.pdf}}\hfill
 %\caption{Comparison of the Fourier Spectrums of the interface's fluctuation at different $\delta\mu$ from simulations and predicted by Eq. 8 in the main text. The data here is for $k_s=4$ and $k_\theta = 6$.} \label{fig:predictandsimulation}
 %\end{figure*}
-\section{Derivation of Eq. 9 in the main text}
+\section{7. Derivation of Eq. 9 in the main text}
 Here we will detail how we write down Eq. 9 in the main text. As mentioned in the main text, we have approximated that the fluctuations of the system follow the Helfrich Hamiltonian with a normalized surface tension, $\gamma$. From simulations (see Fig.~\ref{fig:bendingrigiditynormalization}), the normalization of the bending rigidity, $\kappa$, is minimal. Thus, we will further assume that $\kappa= \kappa_{\rm eq}$ to make the calculation simpler. With this approximation, we have $\langle E_{\rm eq}\rangle _N=\langle l \rangle\sum_q\left(\frac{1}{2}\gamma_{\rm eq} q^2+\frac{1}{2}\kappa_{\rm eq} q^4\right)|\delta h(q)|^2$, $\langle E_{\rm eff}\rangle_N=\langle l \rangle\sum_q\left(\frac{1}{2}\gamma q^2+\frac{1}{2}\kappa_{\rm eq} q^4\right)|\delta h(q)|^2$ and $|\delta h(q)|^2=\frac{k_B T}{\langle l \rangle  \left(\gamma q^2+\kappa_{\rm eq}q^3\right)}$ . If we convert the sum here to integral using $dq=\frac{2\pi}{L}$:
 \begin{equation}
     \langle E_{\rm eq}\rangle_N=\frac{L k_BT}{4\pi}\int_0^{2\pi/\lambda}\frac{\gamma_{\rm eq}q^2+\kappa_{\rm eq}q^4}{\gamma q^2+\kappa_{\rm eq}q^4}dq
@@ -339,7 +340,7 @@ If we plug in the definition of $\langle\epsilon_{\rm diss}\rangle:$
     \end{split}
 \end{equation}
 which is Eq. 10 in our main text.
-\section{3D Model Membrane Simulation}
+\section{8. 3D Model Membrane Simulation}
 
 In this section, we detail calculations that qualitatively suggest that the results obtained with the 2D model in the main text can be extended to non-equilibrium growth problems with three dimensional vesicles/membranes. Following Ref.~\cite{Mahadevan2019}, we model a three dimensional fluid vesicle using a triangulated mesh. The nodes of the mesh are meant to represent membrane particles in a coarse-grained fashion. The energy associated with a specific configuration of the vesicle is given by  $H=\sum_{\rm faces}\left[ (k_A(A-A_0)^2 +\sum_{i=1}^3 k_\theta (\theta_i-\pi/3)^2 + \sum^\prime k_\phi (\phi-\pi)^2)\right]$, where $\sum_{\rm faces}$ is a sum over the triangulated faces, $A$ is the area of a triangulated face, $\theta_i$ are the angles inside a triangulated face,  $\sum^\prime$ denotes a sum over different adjacent phases and $\phi$ denotes the angle between two adjacent faces. 
 
@@ -349,7 +350,7 @@ In our model, the number of bonds or connections a particular particle can make 
 
 Fig.~\ref{fig:3Dmembranesurface} shows the shape of our 3D membrane model at equilibrium. Fig.~\ref{fig:relativeradius3D} is a heat map showing the relative radii of the models when it is at equilibrium and at the instability.
 
-In order to apply the bounds in the main text, we decompose the fluctuations of the 3D membrane model into spherical harmonic modes. Fig.~\ref{fig:boundsof3Dmembrane} shows how the application of our bounds to the 3D membrane model. We plan to further investigate these ideas in future work. 
+In order to apply the bounds in the main text, we decompose the fluctuations of the 3D membrane model into spherical harmonic modes~\cite{Safran1987}. Fig.~\ref{fig:boundsof3Dmembrane} shows how the application of our bounds to the 3D membrane model. We plan to further investigate these ideas in future work. 
 
 \begin{figure*}
 \includegraphics[width=1\linewidth,angle=0]{Fig10.pdf}
